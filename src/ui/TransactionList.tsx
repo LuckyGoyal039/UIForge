@@ -152,10 +152,10 @@ const TransactionList = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="p-5"
+                            className="px-5"
                         >
-                            <h2 className="text-xl text-gray-500 mb-2">Transactions</h2>
-                            <div className="space-y-4">
+                            <h2 className="text-lg md:text-xl text-gray-500 md:mb-2">Transactions</h2>
+                            <div className="space-y-2 md:space-y-4">
                                 {transactions.map((transaction) => (
                                     <motion.div
                                         key={transaction.id}
@@ -164,7 +164,7 @@ const TransactionList = () => {
                                         className="flex items-center justify-between cursor-pointer"
                                     >
                                         <div className="flex items-center">
-                                            <div className={`w-10 h-10 rounded-full ${getIconBackground(transaction.icon)} flex items-center justify-center mr-3`}>
+                                            <div className={`w-8 md:w-10 h-8 md:h-10  rounded-full ${getIconBackground(transaction.icon)} flex items-center justify-center mr-3`}>
                                                 {getIcon(transaction.icon)}
                                             </div>
                                             <div>
@@ -183,14 +183,11 @@ const TransactionList = () => {
                                 ))}
                             </div>
                             <motion.div
-                                className="mt-4 p-3 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer"
+                                className="my-4 md:px-3 py-2 md:py-3 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer"
                                 whileHover={{ backgroundColor: '#e5e7eb' }}
                                 whileTap={{ scale: 0.98 }}
                             >
                                 <span className="text-sm text-gray-700 font-medium">All Transactions</span>
-                                <svg className="w-4 h-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                    <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
                             </motion.div>
                         </motion.div>
                     ) : selectedTransaction && (
@@ -201,22 +198,22 @@ const TransactionList = () => {
                             exit={{ opacity: 0, y: 10 }}
                             className="p-5 relative"
                         >
-                            <div className="flex justify-between items-center mb-4">
-                                <div className="flex items-center">
-                                    <div className={`w-12 h-12 rounded-xl ${getIconBackground(selectedTransaction.icon)} flex items-center justify-center mr-3`}>
-                                        {getIcon(selectedTransaction.icon)}
-                                    </div>
+                            <div className="flex flex-col mb-4">
+                                <div className={`w-12 h-12 rounded-xl ${getIconBackground(selectedTransaction.icon)} flex items-center justify-center mr-3`}>
+                                    {getIcon(selectedTransaction.icon)}
+                                </div>
+                                <div className='flex justify-between'>
                                     <div>
                                         <h3 className="font-medium text-lg text-gray-900 ">{selectedTransaction.name}</h3>
                                         <p className="text-gray-500">{selectedTransaction.category}</p>
                                     </div>
-                                </div>
-                                <div className="text-lg font-medium">
-                                    {selectedTransaction.amount.toLocaleString('en-US', {
-                                        style: 'currency',
-                                        currency: 'USD',
-                                        minimumFractionDigits: 2,
-                                    })}
+                                    <p className="text-lg font-medium text-gray-700">
+                                        {selectedTransaction.amount.toLocaleString('en-US', {
+                                            style: 'currency',
+                                            currency: 'USD',
+                                            minimumFractionDigits: 2,
+                                        })}
+                                    </p>
                                 </div>
                             </div>
 
