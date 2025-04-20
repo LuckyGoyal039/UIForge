@@ -1,7 +1,6 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MoreHorizontal } from 'lucide-react';
 
 // Define the structure for each menu item
 interface MenuItem {
