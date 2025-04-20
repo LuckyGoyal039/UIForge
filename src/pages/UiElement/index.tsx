@@ -1,5 +1,6 @@
 import Frame from "@/components/Frame";
 import CircularMenuPage from "@/ui/circulatMenuPage";
+import ContinuousTab from "@/ui/ContinuousTab";
 import TransactionList from "@/ui/TransactionList";
 // import FluidSimulation from "@/ui/FluidSimulation";
 
@@ -11,13 +12,13 @@ const ElementList = [
     },
     {
         id: 2,
-        name: "Your Component",
-        component: <div>component</div>
-    },
-    {
-        id: 2,
         name: "Transaction List",
         component: <TransactionList />
+    },
+    {
+        id: 3,
+        name: "Continuous Tabs",
+        component: <ContinuousTab/>
     },
 ]
 
@@ -29,7 +30,6 @@ export default function UiElement() {
                     <Frame
                         key={element.id}
                         title={element.name}
-                        className="h-full"
                     >
                         {element.component}
                     </Frame>
