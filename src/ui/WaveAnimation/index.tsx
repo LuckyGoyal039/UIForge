@@ -22,7 +22,7 @@ export default function WaveAnimation({
   useEffect(() => {
     if (!svgRef.current || !lineRef.current) return;
     
-    const svg = svgRef.current;
+    // const svg = svgRef.current;
     const line = lineRef.current;
     
     const svgSize = {
@@ -60,10 +60,10 @@ export default function WaveAnimation({
   }
   
   function generatePoints(svgSize: {w: number, h: number}) {
-    let segments: string[] = [];
+    const segments: string[] = [];
     const freq = random(0.05, 0.15);
     const amplitude = random(0.1, 0.55) * svgSize.h * 0.9;
-    let p = {x: 0, y: 0};
+    const p = {x: 0, y: 0};
     
     for (let i = 0; i < svgSize.w; i++) {
       p.x = i;

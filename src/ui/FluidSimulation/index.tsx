@@ -1,7 +1,8 @@
 // components/FluidSimulation.tsx
 'use client'
 import React, { useEffect, useRef } from 'react';
-import redChild from '../../assets/images/redChild.jpeg'
+import redChild from '@/assets/images/redChild.jpeg'
+import Image from 'next/image';
 
 interface PointerState {
     x: number;
@@ -392,9 +393,9 @@ const FluidSimulation: React.FC = () => {
             };
         };
 
-        const createDoubleFBO = (w: number, h: number, type?: number): DoubleFBO => {
-            let fbo1 = createFBO(w, h, type);
-            let fbo2 = createFBO(w, h, type);
+        const createDoubleFBO = (w: number, h: number): DoubleFBO => {
+            let fbo1 = createFBO(w, h, 6408);
+            let fbo2 = createFBO(w, h, 6408);
 
             return {
                 width: w,
@@ -417,8 +418,8 @@ const FluidSimulation: React.FC = () => {
 
             outputColor = createDoubleFBO(dyeRes.width, dyeRes.height);
             velocity = createDoubleFBO(simRes.width, simRes.height);
-            divergence = createFBO(simRes.width, simRes.height, gl.RGB);
-            pressure = createDoubleFBO(simRes.width, simRes.height, gl.RGB);
+            divergence = createFBO(simRes.width, simRes.height);
+            pressure = createDoubleFBO(simRes.width, simRes.height);
         };
 
         initFBOs();
@@ -571,7 +572,7 @@ const FluidSimulation: React.FC = () => {
     return (
         <div className="relative w-full h-screen overflow-hidden">
             <div className="fixed inset-0 w-full h-full">
-                <img
+                <Image
                     ref={imageRef}
                     src={redChild}
                     alt="Liquid content reveal"

@@ -29,7 +29,7 @@ interface GooeyEffectProps {
   zIndex?: number; // Custom z-index
 }
 
-const GooeyEffect: React.FC<GooeyEffectProps> = ({ 
+const GooeyEffect: React.FC<GooeyEffectProps> = ({
   containerId = 'gooey-container',
   height = '1000px',
   zIndex = 5
@@ -206,8 +206,8 @@ const GooeyEffect: React.FC<GooeyEffectProps> = ({
             gl_FragColor = vec4(color, gooey);
         }
       `;
-
-      const gl = canvasRef.current.getContext("webgl") || canvasRef.current.getContext("experimental-webgl");
+      const gl = canvasRef.current?.getContext("webgl") as WebGLRenderingContext | null
+        ?? canvasRef.current?.getContext("experimental-webgl") as WebGLRenderingContext | null;
 
       if (!gl) {
         console.error("WebGL is not supported by your browser.");
@@ -217,7 +217,7 @@ const GooeyEffect: React.FC<GooeyEffectProps> = ({
       const createShader = (gl: WebGLRenderingContext, sourceCode: string, type: number) => {
         const shader = gl.createShader(type);
         if (!shader) return null;
-        
+
         gl.shaderSource(shader, sourceCode);
         gl.compileShader(shader);
 
@@ -238,7 +238,7 @@ const GooeyEffect: React.FC<GooeyEffectProps> = ({
       const createShaderProgram = (gl: WebGLRenderingContext, vertexShader: WebGLShader, fragmentShader: WebGLShader) => {
         const program = gl.createProgram();
         if (!program) return null;
-        
+
         gl.attachShader(program, vertexShader);
         gl.attachShader(program, fragmentShader);
         gl.linkProgram(program);
@@ -255,7 +255,7 @@ const GooeyEffect: React.FC<GooeyEffectProps> = ({
       if (!shaderProgram) return null;
 
       const getUniforms = (program: WebGLProgram) => {
-        let uniforms: ShaderUniforms = {};
+        const uniforms: ShaderUniforms = {};
         const uniformCount = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
         for (let i = 0; i < uniformCount; i++) {
           const activeUniform = gl.getActiveUniform(program, i);
@@ -310,7 +310,7 @@ const GooeyEffect: React.FC<GooeyEffectProps> = ({
       const rect = containerRef.current.getBoundingClientRect();
       canvasRef.current.width = rect.width * devicePixelRatio;
       canvasRef.current.height = rect.height * devicePixelRatio;
-      
+
       glRef.current.viewport(0, 0, canvasRef.current.width, canvasRef.current.height);
       glRef.current.uniform2f(uniformsRef.current.u_resolution, canvasRef.current.width, canvasRef.current.height);
     };
@@ -321,7 +321,7 @@ const GooeyEffect: React.FC<GooeyEffectProps> = ({
 
       gui
         .add(params, "colWidth", 0.2, 1.5)
-        .onChange(v => {
+        .onChange((v: number) => {
           if (!glRef.current) return;
           glRef.current.uniform1f(uniformsRef.current.u_col_width, v);
         })
@@ -329,25 +329,25 @@ const GooeyEffect: React.FC<GooeyEffectProps> = ({
 
       gui
         .add(params, "scale", 0.15, 0.35)
-        .onChange(v => {
+        .onChange((v:number) => {
           if (!glRef.current) return;
           glRef.current.uniform1f(uniformsRef.current.u_scale, v);
         });
       gui
         .add(params, "speed", 0, 1)
-        .onChange(v => {
+        .onChange((v:number) => {
           if (!glRef.current) return;
           glRef.current.uniform1f(uniformsRef.current.u_speed, v);
         });
       gui
         .add(params, "seed", 0, 1)
-        .onChange(v => {
+        .onChange((v:number) => {
           if (!glRef.current) return;
           glRef.current.uniform1f(uniformsRef.current.u_seed, v);
         });
       gui
         .addColor(params, "color")
-        .onChange(v => {
+        .onChange((v:number[]) => {
           if (!glRef.current) return;
           glRef.current.uniform3f(uniformsRef.current.u_color, v[0], v[1], v[2]);
         });
@@ -403,7 +403,7 @@ const GooeyEffect: React.FC<GooeyEffectProps> = ({
 
     // Handle window resize
     window.addEventListener("resize", resizeCanvas);
-    
+
     // Initial size
     setTimeout(resizeCanvas, 0);
 
@@ -416,16 +416,16 @@ const GooeyEffect: React.FC<GooeyEffectProps> = ({
       if (animFrameRef.current) {
         cancelAnimationFrame(animFrameRef.current);
       }
-      
+
       // Clean up ScrollTrigger instance
       ScrollTrigger.getById(`scrollTrigger-${containerId}`)?.kill();
     };
   }, [containerId]);
 
   return (
-    <div 
+    <div
       id={containerId}
-      className="relative overflow-hidden" 
+      className="relative overflow-hidden"
       style={{ height }}
       ref={containerRef}
     >
@@ -436,14 +436,14 @@ const GooeyEffect: React.FC<GooeyEffectProps> = ({
           <div className="arrow-animated text-xl animate-bounce">⬇</div>
         </div>
       </div>
-      
-      <canvas 
-        ref={canvasRef} 
+
+      <canvas
+        ref={canvasRef}
         className="absolute top-0 left-0 block w-full h-full pointer-events-none"
         style={{ zIndex }}
       />
-      
-      <div 
+
+      <div
         ref={contentRef}
         className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center opacity-0"
         style={{ zIndex: zIndex + 1 }}
@@ -451,10 +451,10 @@ const GooeyEffect: React.FC<GooeyEffectProps> = ({
         <p className="text-blue-400">
           <a href="https://linkedin.com/in/ksenia-kondrashova/" target="_blank" rel="noopener noreferrer" className="hover:underline">
             linkedIn
-          </a> | 
+          </a> |
           <a href="https://codepen.io/ksenia-k" target="_blank" rel="noopener noreferrer" className="hover:underline ml-1 mr-1">
             codepen
-          </a> | 
+          </a> |
           <a href="https://twitter.com/uuuuuulala" target="_blank" rel="noopener noreferrer" className="hover:underline">
             twitter (X)
           </a>

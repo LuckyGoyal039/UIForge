@@ -1,6 +1,6 @@
 import Frame from "@/components/Frame";
 import CircularMenuPage from "@/ui/circulatMenuPage";
-import FluidSimulation from "@/ui/FluidSimulation";
+// import FluidSimulation from "@/ui/FluidSimulation";
 
 const ElementList = [
     {
