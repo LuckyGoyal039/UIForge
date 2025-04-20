@@ -8,7 +8,7 @@ export function ThemeProvider({
   ...props
 }: {
   children: ReactNode;
-  [key: string]: any;
+  [key: string]: string | ReactNode;
 }) {
   const [mounted, setMounted] = useState(false);
 

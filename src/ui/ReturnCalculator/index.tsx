@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './returnCalculator.module.css'
 
 export default function ReturnCalculator() {
