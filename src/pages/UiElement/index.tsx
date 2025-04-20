@@ -2,6 +2,7 @@ import Frame from "@/components/Frame";
 import CircularMenuPage from "@/ui/circulatMenuPage";
 import ContinuousTab from "@/ui/ContinuousTab";
 import TransactionList from "@/ui/TransactionList";
+import ViewMap from "@/ui/ViewMap";
 // import FluidSimulation from "@/ui/FluidSimulation";
 
 const ElementList = [
@@ -19,6 +20,11 @@ const ElementList = [
         id: 3,
         name: "Continuous Tabs",
         component: <ContinuousTab/>
+    },
+    {
+        id: 4,
+        name: "View on Maps",
+        component: <ViewMap/>
     },
 ]
 
