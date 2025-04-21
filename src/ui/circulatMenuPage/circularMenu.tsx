@@ -1,6 +1,9 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { GiSpiralBloom } from "react-icons/gi";
+import { GiSpiralTentacle } from "react-icons/gi";
+
 
 // Define the structure for each menu item
 interface MenuItem {
@@ -21,17 +24,7 @@ interface CircularMenuProps {
 const CircularMenu: React.FC<CircularMenuProps> = ({
   items = [],
   centralIcon = (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-6 h-6">
-      <circle cx="12" cy="12" r="2" />
-      <circle cx="12" cy="6" r="2" />
-      <circle cx="12" cy="18" r="2" />
-      <circle cx="6" cy="12" r="2" />
-      <circle cx="18" cy="12" r="2" />
-      <circle cx="6" cy="6" r="2" />
-      <circle cx="18" cy="18" r="2" />
-      <circle cx="6" cy="18" r="2" />
-      <circle cx="18" cy="6" r="2" />
-    </svg>
+    <GiSpiralTentacle color='black'/>
   ),
   radius = 140,
   isOpen: externalIsOpen,
@@ -118,7 +111,7 @@ const CircularMenu: React.FC<CircularMenuProps> = ({
                 marginLeft: "-20px", 
                 marginTop: "-20px" 
               }}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.3, transition:0.15 }}
               whileTap={{ scale: 0.95 }}
             >
               {item.icon}

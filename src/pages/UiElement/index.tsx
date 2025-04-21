@@ -19,19 +19,20 @@ const ElementList = [
     },
     {
         id: 3,
+        name: "Circular Menu",
+        component: <CircularMenuPage />
+    },
+    {
+        id: 4,
         name: "Continuous Tabs",
         component: <ContinuousTab/>
     },
     {
-        id: 4,
+        id: 5,
         name: "View on Maps",
         component: <ViewMap/>
     },
-    {
-        id: 5,
-        name: "Circular Menu",
-        component: <CircularMenuPage />
-    },
+   
    
 ]
 
