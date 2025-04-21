@@ -1,6 +1,9 @@
 'use client'
 import CardSwipe from './CardSwipe';
 import { X } from 'lucide-react';
+import { GiSteeltoeBoots } from "react-icons/gi";
+import { FaBookReader } from "react-icons/fa";
+import { RiDrinks2Line } from "react-icons/ri";
 
 export default function Card() {
   const cards = [
@@ -8,19 +11,19 @@ export default function Card() {
       id: 1,
       title: "Running",
       description: "Feel the endorphins! Get a quick energy boost.",
-      icon: <X size={24} />
+      icon: <GiSteeltoeBoots size={90} />
     },
     {
       id: 2,
       title: "Reading",
       description: "Sharpen your mind & escape to new adventures.",
-      icon: <X size={24} />
+      icon: <FaBookReader size={90} />
     },
     {
       id: 3,
       title: "Drink Water",
       description: "Stay hydrated & energized. Your body will thank you!",
-      icon: <X size={24} />
+      icon: <RiDrinks2Line size={90} />
     }
   ];
 
@@ -30,7 +33,7 @@ export default function Card() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <div className="h-full flex items-center justify-center bg-gray-100 p-4">
       <CardSwipe cards={cards} onCardClick={handleCardClick} />
     </div>
   );

@@ -20,14 +20,14 @@ interface CardSwipeProps {
 const Card: React.FC<{ data: CardData; onClick?: () => void }> = ({ data, onClick }) => {
   return (
     <div 
-      className="bg-white rounded-3xl shadow-lg p-6 w-full max-w-xs mx-auto flex flex-col items-center"
+      className="bg-white rounded-3xl shadow-lg p-6 w-full max-w-xs mx-auto flex flex-col text-black"
       onClick={onClick}
     >
-      <div className="bg-gray-100 p-4 rounded-2xl mb-6">
+      <div className="p-4 rounded-2xl mb-6">
         {data.icon}
       </div>
       <h2 className="text-2xl font-bold mb-2">{data.title}</h2>
-      <p className="text-gray-500 text-center mb-6">{data.description}</p>
+      <p className="text-gray-500  mb-6">{data.description}</p>
       <button className="bg-gray-800 text-white py-3 px-6 rounded-full font-medium">
         Get Started
       </button>
