@@ -1,10 +1,17 @@
 'use client'
 import CardSwipe from './CardSwipe';
-import { X } from 'lucide-react';
 import { GiSteeltoeBoots } from "react-icons/gi";
 import { FaBookReader } from "react-icons/fa";
 import { RiDrinks2Line } from "react-icons/ri";
+import { ReactNode } from 'react';
 
+interface Card {
+  id: number;
+  title: string;
+  description: string;
+  icon: ReactNode
+
+}
 export default function Card() {
   const cards = [
     {
@@ -27,7 +34,7 @@ export default function Card() {
     }
   ];
 
-  const handleCardClick = (card) => {
+  const handleCardClick = (card:Card) => {
     console.log(`Card clicked: ${card.title}`);
     // Handle the card click, e.g., navigate to a details page
   };

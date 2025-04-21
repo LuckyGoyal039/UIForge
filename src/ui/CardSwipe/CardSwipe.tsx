@@ -35,26 +35,6 @@ const Card: React.FC<{ data: CardData; onClick?: () => void }> = ({ data, onClic
   );
 };
 
-// Icons for our cards
-const RunningIcon = () => (
-  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M16 16l-4-4 4-4" />
-    <path d="M8 8l4 4-4 4" />
-  </svg>
-);
-
-const BookIcon = () => (
-  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M4 19.5v-15A2.5 2.5 0 016.5 2H20v20H6.5a2.5 2.5 0 010-5H20" />
-  </svg>
-);
-
-const WaterIcon = () => (
-  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M12 2L4.5 10c-1.5 1.5-2 3.5-2 5.5 0 4.14 3.36 7.5 7.5 7.5s7.5-3.36 7.5-7.5c0-2-0.5-4-2-5.5L12 2z" />
-  </svg>
-);
-
 const CardSwipe: React.FC<CardSwipeProps> = ({ cards, onCardClick }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);

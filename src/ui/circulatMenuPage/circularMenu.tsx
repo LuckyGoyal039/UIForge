@@ -1,7 +1,6 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GiSpiralBloom } from "react-icons/gi";
 import { GiSpiralTentacle } from "react-icons/gi";
 
 
@@ -24,7 +23,7 @@ interface CircularMenuProps {
 const CircularMenu: React.FC<CircularMenuProps> = ({
   items = [],
   centralIcon = (
-    <GiSpiralTentacle color='black'/>
+    <GiSpiralTentacle color='black' />
   ),
   radius = 140,
   isOpen: externalIsOpen,
@@ -87,31 +86,34 @@ const CircularMenu: React.FC<CircularMenuProps> = ({
               key={item.id}
               className="absolute z-0 flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md cursor-pointer"
               initial={{ scale: 0, x: 0, y: 0 }}
-              animate={{ 
-                scale: 1, 
-                x, 
-                y 
+              animate={{
+                scale: 1,
+                x,
+                y
               }}
-              exit={{ 
+              exit={{
                 scale: 0,
                 x: 0,
                 y: 0
               }}
-              transition={{ 
+              transition={{
                 duration: 0.5,
                 delay: index * 0.05,
-                ease: "easeOut" 
+                ease: "easeOut"
               }}
               onClick={() => {
                 if (item.onClick) item.onClick();
               }}
-              style={{ 
-                left: "50%", 
-                top: "50%", 
-                marginLeft: "-20px", 
-                marginTop: "-20px" 
+              style={{
+                left: "50%",
+                top: "50%",
+                marginLeft: "-20px",
+                marginTop: "-20px"
               }}
-              whileHover={{ scale: 1.3, transition:0.15 }}
+              whileHover={{
+                scale: 1.3,
+                transition: { duration: 0.15 }
+              }}
               whileTap={{ scale: 0.95 }}
             >
               {item.icon}
