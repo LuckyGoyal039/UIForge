@@ -10,8 +10,8 @@ import ViewMap from "@/ui/ViewMap";
 const ElementList = [
     {
         id: 1,
-        name: "Circular Menu",
-        component: <CircularMenuPage />
+        name: "Return Calculator Snippet",
+        component: <ReturnCalculator/>
     },
     {
         id: 2,
@@ -20,24 +20,26 @@ const ElementList = [
     },
     {
         id: 3,
+        name: "Circular Menu",
+        component: <CircularMenuPage />
+    },
+    {
+        id: 4,
         name: "Continuous Tabs",
         component: <ContinuousTab/>
     },
     {
-        id: 4,
+        id: 5,
         name: "View on Maps",
         component: <ViewMap/>
-    },
-    {
-        id: 5,
-        name: "Return Calculator Snippet",
-        component: <ReturnCalculator/>
     },
     {
         id: 6,
         name: "Card Swipe",
         component: <Card/>
     },
+   
+   
 ]
 
 export default function UiElement() {
