@@ -1,5 +1,6 @@
 import Frame from "@/components/Frame";
 import Card from "@/ui/CardSwipe";
+import CashDisclosure from "@/ui/CashDisclosure";
 import CircularMenuPage from "@/ui/circulatMenuPage";
 import ContinuousTab from "@/ui/ContinuousTab";
 import ReturnCalculator from "@/ui/ReturnCalculator";
@@ -37,6 +38,11 @@ const ElementList = [
         id: 6,
         name: "Card Swipe",
         component: <Card/>
+    },
+    {
+        id: 7,
+        name: "Add Cash Disclosure",
+        component: <CashDisclosure />
     },
    
    
