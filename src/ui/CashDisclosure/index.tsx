@@ -7,15 +7,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface ProgressProps {
   value: number;
   className?: string;
-  [x: string]: any;
 }
 
 // Shadcn-inspired Progress component
-const Progress = ({ value, className, ...props }: ProgressProps) => {
+const Progress = ({ value, className }: ProgressProps) => {
   return (
     <div
       className={`relative h-1 w-full overflow-hidden rounded-full bg-gray-200 ${className || ''}`}
-      {...props}
     >
       <div
         className="h-full w-full flex-1 bg-gray-900 transition-all"
