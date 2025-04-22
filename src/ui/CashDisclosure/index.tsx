@@ -4,42 +4,71 @@ import { useState, useRef, useEffect } from 'react';
 import { Wallet, Plus, X, Check, CreditCard } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+interface ProgressProps {
+  value: number;
+  className?: string;
+  [x: string]: any;
+}
+
+// Shadcn-inspired Progress component
+const Progress = ({ value, className, ...props }: ProgressProps) => {
+  return (
+    <div
+      className={`relative h-1 w-full overflow-hidden rounded-full bg-gray-200 ${className || ''}`}
+      {...props}
+    >
+      <div
+        className="h-full w-full flex-1 bg-gray-900 transition-all"
+        style={{ transform: `translateX(-${100 - value}%)` }}
+      />
+    </div>
+  );
+};
+
+interface Card {
+  lastFour: string;
+  type: 'visa' | 'mastercard';
+}
+
 const CashDisclosure = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [balance, setBalance] = useState(34.00);
-  const [selectedAmount, setSelectedAmount] = useState(null);
-  const [selectedCardIndex, setSelectedCardIndex] = useState(0);
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [isProcessingComplete, setIsProcessingComplete] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const modalRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [balance, setBalance] = useState<number>(34.00);
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
+  const [selectedCardIndex, setSelectedCardIndex] = useState<number>(0);
+  const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const [isProcessingComplete, setIsProcessingComplete] = useState<boolean>(false);
+  const [progress, setProgress] = useState<number>(0);
+  const modalRef = useRef<HTMLDivElement>(null);
   
-  const cards = [
+  const cards: Card[] = [
     { lastFour: '6756', type: 'visa' },
     { lastFour: '4632', type: 'mastercard' }
   ];
 
   // Process animation effect
   useEffect(() => {
-    let progressInterval;
+    let progressInterval: NodeJS.Timeout | undefined;
     
     if (isProcessing) {
       progressInterval = setInterval(() => {
         setProgress(prev => {
-          // Simulate slight random variations in progress speed
-          const increment = Math.random() * 8 + 3; 
+          // More consistent progress with slight variations
+          const increment = Math.random() * 3 + 1; 
           const newProgress = prev + increment;
           
           if (newProgress >= 100) {
             clearInterval(progressInterval);
-            setIsProcessing(false);
-            setIsProcessingComplete(true);
-            setBalance(prevBalance => prevBalance + selectedAmount);
+            setProgress(100);
+            setTimeout(() => {
+              setIsProcessing(false);
+              setIsProcessingComplete(true);
+              setBalance(prevBalance => prevBalance + (selectedAmount || 0));
+            }, 300);
             return 100;
           }
           return newProgress;
         });
-      }, 100); // Update every 100ms
+      }, 60); // Faster updates for smoother animation
     }
     
     return () => {
@@ -60,11 +89,11 @@ const CashDisclosure = () => {
     setProgress(0);
   };
 
-  const handleSelectCard = (index) => {
+  const handleSelectCard = (index: number) => {
     setSelectedCardIndex(index);
   };
 
-  const handleSelectAmount = (amount) => {
+  const handleSelectAmount = (amount: number) => {
     setSelectedAmount(amount);
   };
 
@@ -206,17 +235,8 @@ const CashDisclosure = () => {
     }
   };
 
-  // Progress bar animation variants
-  const progressBarVariants = {
-    initial: { width: 0 },
-    animate: { 
-      width: `${progress}%`,
-      transition: { ease: "easeOut", duration: 0.2 }
-    }
-  };
-
   return (
-    <div className="w-full h-full flex justify-center items-center px-10">
+    <div className="w-full h-full flex justify-center items-center px-2 md:px-10 bg-[#f0eff6]">
       {/* Single container that morphs between wallet and modal */}
       <motion.div
         initial="wallet"
@@ -247,14 +267,14 @@ const CashDisclosure = () => {
                     delay: 0.1
                   }}
                 >
-                  <Wallet className="text-gray-400" size={48} />
+                  <Wallet className="text-gray-400 lg:w-10 lg:h-10" />
                 </motion.div>
                 <div>
                   <div className="text-gray-500 text-sm">Wallet</div>
                   <motion.p 
                     layoutId="balance"
-                    className="font-semibold text-xl text-gray-700"
-                    key={balance}
+                    className="font-semibold md:text-xl text-gray-700"
+                    key={balance.toString()}
                     initial="initial"
                     animate="updated"
                     variants={balanceVariants}
@@ -276,7 +296,7 @@ const CashDisclosure = () => {
                 whileHover="hover"
                 whileTap="tap"
               >
-                <Plus size={18} className="mr-1" /> Add Cash
+                <Plus size={18} /> Add Cash
               </motion.button>
             </motion.div>
           )}
@@ -292,7 +312,7 @@ const CashDisclosure = () => {
               ref={modalRef}
             >
               {/* Modal Header */}
-              <div className="p-4 border-b border-gray-100">
+              <div className="px-4 py-1 md:py-4 border-b border-gray-100">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center">
                     <motion.div 
@@ -310,7 +330,7 @@ const CashDisclosure = () => {
                     <motion.div 
                       layoutId="balance"
                       className="font-semibold text-xl text-gray-600"
-                      key={balance}
+                      key={balance.toString()}
                       variants={balanceVariants}
                       transition={{ 
                         type: "spring", 
@@ -340,7 +360,7 @@ const CashDisclosure = () => {
               </div>
 
               {/* Modal Content */}
-              <div className="p-4">
+              <div className="px-4 py-2 md:py-4">
                 {/* Payment Mode */}
                 <motion.div 
                   className="flex justify-between items-center mb-3"
@@ -348,7 +368,7 @@ const CashDisclosure = () => {
                 >
                   <div className="text-gray-500">Payment Mode</div>
                   <motion.button 
-                    className="bg-white border border-gray-200 rounded-full px-3 py-1 text-sm flex items-center"
+                    className="bg-white border border-gray-200 rounded-full px-3 py-1 text-sm flex items-center text-gray-700"
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
@@ -369,7 +389,7 @@ const CashDisclosure = () => {
                       initial="unselected"
                       animate={selectedCardIndex === index ? "selected" : "unselected"}
                       whileHover={{ backgroundColor: "#f9fafb" }}
-                      className="border rounded-lg p-3 flex justify-between items-center cursor-pointer"
+                      className="border rounded-lg px-3 py-1 md:py-3 flex justify-between items-center cursor-pointer"
                       onClick={() => handleSelectCard(index)}
                     >
                       <div className="flex items-center text-gray-500">
@@ -411,7 +431,7 @@ const CashDisclosure = () => {
                   className="text-gray-500"
                   variants={modalItemVariants}
                 >
-                  <div className="mb-3">Cash</div>
+                  <div className="mb-2 md:mb-3">Cash</div>
                   <div className="grid grid-cols-3 gap-2 mb-4">
                     {[50, 100, 300].map((amount) => (
                       <motion.div
@@ -420,7 +440,7 @@ const CashDisclosure = () => {
                         initial="unselected"
                         animate={selectedAmount === amount ? "selected" : "unselected"}
                         whileHover="hover"
-                        className={`py-2 px-4 rounded-full text-center cursor-pointer border-2 ${
+                        className={`md:py-2 px-4 rounded-full text-center cursor-pointer border md:border-2 ${
                           selectedAmount === amount ? 'border-gray-900' : 'border-transparent bg-gray-50'
                         }`}
                         onClick={() => handleSelectAmount(amount)}
@@ -430,30 +450,35 @@ const CashDisclosure = () => {
                     ))}
                   </div>
 
-                  {/* Button with progress animation */}
-                  <div className="relative">
+                  {/* Processing section with shadcn-style progress */}
+                  <div className="space-y-4">
+                    {/* Shadcn Progress indicator - only visible when processing */}
+                    {isProcessing && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="w-full"
+                      >
+                        <div className="flex justify-between text-xs text-gray-500 mb-1">
+                          <span>Processing payment</span>
+                          <span>{Math.round(progress)}%</span>
+                        </div>
+                        <Progress value={progress} />
+                      </motion.div>
+                    )}
+
+                    {/* Button with state changes */}
                     <motion.button
-                      className="w-full bg-gray-900 text-white rounded-full py-3 flex items-center justify-center font-medium overflow-hidden"
+                      className={`w-full bg-gray-900 text-white rounded-full py-3 flex items-center justify-center font-medium`}
                       onClick={isProcessingComplete ? handleCloseModal : handleAddCash}
                       disabled={(!selectedAmount && !isProcessingComplete) || isProcessing}
                       variants={buttonVariants}
                       whileHover={(selectedAmount || isProcessingComplete) && !isProcessing ? "hover" : "idle"}
                       whileTap={(selectedAmount || isProcessingComplete) && !isProcessing ? "tap" : "idle"}
                       style={{ 
-                        opacity: (selectedAmount || isProcessingComplete) && !isProcessing ? 1 : 0.7 
+                        opacity: (selectedAmount || isProcessingComplete) || isProcessing ? 1 : 0.7 
                       }}
                     >
-                      {/* Progress bar */}
-                      {isProcessing && (
-                        <motion.div 
-                          className="absolute left-0 bottom-0 h-full bg-gray-700 opacity-70"
-                          variants={progressBarVariants}
-                          initial="initial"
-                          animate="animate"
-                          key={progress}
-                        />
-                      )}
-                      
                       {/* Button text */}
                       {isProcessingComplete ? (
                         <div className="flex items-center relative z-10">
@@ -468,8 +493,19 @@ const CashDisclosure = () => {
                           <span>Done</span>
                         </div>
                       ) : isProcessing ? (
-                        <div className="flex items-center relative z-10">
-                          <span>Processing... {Math.round(progress)}%</span>
+                        <div className="flex items-center justify-center relative z-10">
+                          <motion.div
+                            animate={{
+                              opacity: [0.4, 1, 0.4],
+                            }}
+                            transition={{
+                              duration: 1.5,
+                              repeat: Infinity,
+                              repeatType: "loop",
+                            }}
+                          >
+                            Processing...
+                          </motion.div>
                         </div>
                       ) : (
                         <div className="flex items-center relative z-10">
