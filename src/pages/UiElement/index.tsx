@@ -20,9 +20,19 @@ const ElementList = [
         component: <TransactionList />
     },
     {
+        id: 7,
+        name: "Add Cash Disclosure",
+        component: <CashDisclosure />
+    },
+    {
         id: 3,
         name: "Circular Menu",
         component: <CircularMenuPage />
+    },
+    {
+        id: 6,
+        name: "Card Swipe",
+        component: <Card/>
     },
     {
         id: 4,
@@ -33,16 +43,6 @@ const ElementList = [
         id: 5,
         name: "View on Maps",
         component: <ViewMap/>
-    },
-    {
-        id: 6,
-        name: "Card Swipe",
-        component: <Card/>
-    },
-    {
-        id: 7,
-        name: "Add Cash Disclosure",
-        component: <CashDisclosure />
     },
    
    
