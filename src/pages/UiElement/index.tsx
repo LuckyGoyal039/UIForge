@@ -3,6 +3,7 @@ import Card from "@/ui/CardSwipe";
 import CashDisclosure from "@/ui/CashDisclosure";
 import CircularMenuPage from "@/ui/circulatMenuPage";
 import ContinuousTab from "@/ui/ContinuousTab";
+import RadialCarousel from "@/ui/RadialCarousel";
 import ReturnCalculator from "@/ui/ReturnCalculator";
 import TransactionList from "@/ui/TransactionList";
 import ViewMap from "@/ui/ViewMap";
@@ -20,29 +21,34 @@ const ElementList = [
         component: <TransactionList />
     },
     {
-        id: 7,
+        id: 3,
         name: "Add Cash Disclosure",
         component: <CashDisclosure />
     },
     {
-        id: 3,
+        id: 4,
         name: "Circular Menu",
         component: <CircularMenuPage />
     },
     {
-        id: 6,
+        id: 5,
         name: "Card Swipe",
         component: <Card/>
     },
     {
-        id: 4,
+        id: 6,
         name: "Continuous Tabs",
         component: <ContinuousTab/>
     },
     {
-        id: 5,
+        id: 7,
         name: "View on Maps",
         component: <ViewMap/>
+    },
+    {
+        id: 8,
+        name: "Radial Carousel",
+        component: <RadialCarousel/>
     },
    
    
