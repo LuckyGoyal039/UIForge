@@ -16,6 +16,13 @@ const itemList = [
     { id: 9, emoji: '🤔', name: 'Thinking', color: 'bg-indigo-100' },
 ];
 
+interface Item {
+    id: string | number;
+    emoji: string,
+    name: string,
+    color: string
+}
+
 export default function RadialCarousel() {
     const radius = 150;
     const rotate = useMotionValue(0);
@@ -28,7 +35,7 @@ export default function RadialCarousel() {
     const hasMoved = useRef(false);
 
     const [isUserDragging, setIsUserDragging] = useState(false);
-    const [selectedItem, setSelectedItem] = useState<any>(null);
+    const [selectedItem, setSelectedItem] = useState<Item | null>(null);
 
     const rotationSpeedFactor = 2; // Reduced for smoother interaction
 
