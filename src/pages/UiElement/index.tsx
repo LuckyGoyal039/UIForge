@@ -26,6 +26,11 @@ const ElementList = [
         component: <CashDisclosure />
     },
     {
+        id: 8,
+        name: "Radial Carousel",
+        component: <RadialCarousel/>
+    },
+    {
         id: 4,
         name: "Circular Menu",
         component: <CircularMenuPage />
@@ -40,16 +45,11 @@ const ElementList = [
         name: "Continuous Tabs",
         component: <ContinuousTab/>
     },
-    {
-        id: 7,
-        name: "View on Maps",
-        component: <ViewMap/>
-    },
-    {
-        id: 8,
-        name: "Radial Carousel",
-        component: <RadialCarousel/>
-    },
+    // {
+    //     id: 7,
+    //     name: "View on Maps",
+    //     component: <ViewMap/>
+    // },
    
    
 ]
