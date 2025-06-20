@@ -6,7 +6,7 @@ import ContinuousTab from "@/ui/ContinuousTab";
 import RadialCarousel from "@/ui/RadialCarousel";
 import ReturnCalculator from "@/ui/ReturnCalculator";
 import TransactionList from "@/ui/TransactionList";
-import ViewMap from "@/ui/ViewMap";
+// import ViewMap from "@/ui/ViewMap";
 // import FluidSimulation from "@/ui/FluidSimulation";
 
 const ElementList = [

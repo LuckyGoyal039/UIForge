@@ -46,6 +46,7 @@ export default function RadialCarousel() {
     function handlePointerDown(e: React.PointerEvent<HTMLDivElement>, index: number) {
         e.preventDefault();
         e.stopPropagation();
+        console.log(index)
 
         const rect = containerRef.current?.getBoundingClientRect();
         if (!rect) return;
@@ -89,7 +90,7 @@ export default function RadialCarousel() {
         lastAngle.current = newAngle;
     }
 
-    function handlePointerUp(e: React.PointerEvent<HTMLDivElement>, item?: any) {
+    function handlePointerUp(e: React.PointerEvent<HTMLDivElement>, item?: Item) {
         const wasDragging = isDragging.current;
         const didMove = hasMoved.current;
 
