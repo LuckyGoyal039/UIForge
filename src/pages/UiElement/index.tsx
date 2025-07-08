@@ -22,7 +22,7 @@ function generateId() {
 // Generate descending dates starting from today, spaced between 3–14 days apart
 function generateRandomDates(count: number): string[] {
     const dates: string[] = [];
-    let currentDate = new Date();
+    const currentDate = new Date();
     currentDate.setDate(currentDate.getDate() - 7);
 
     for (let i = 0; i < count; i++) {
