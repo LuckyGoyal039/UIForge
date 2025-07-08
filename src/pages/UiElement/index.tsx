@@ -7,7 +7,8 @@ import CurrencySwap from "@/ui/currencySwap";
 import RadialCarousel from "@/ui/RadialCarousel";
 import ReturnCalculator from "@/ui/ReturnCalculator";
 import TransactionList from "@/ui/TransactionList";
-import ViewMap from "@/ui/ViewMap";
+import TreeMenu from "@/ui/treeMenu";
+// import ViewMap from "@/ui/ViewMap";
 
 // Generate a random unique ID (similar to UUID v4 format)
 function generateId() {
@@ -22,6 +23,7 @@ function generateId() {
 function generateRandomDates(count: number): string[] {
     const dates: string[] = [];
     let currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() - 7);
 
     for (let i = 0; i < count; i++) {
         dates.push(currentDate.toISOString().split("T")[0]); // YYYY-MM-DD
@@ -41,6 +43,7 @@ const componentsList = [
     { name: "Swap Currency", component: <CurrencySwap /> },
     { name: "Card Swipe", component: <Card /> },
     { name: "Continuous Tabs", component: <ContinuousTab /> },
+    { name: "Tree Menu", component: <TreeMenu /> },
     // { name: "View on Maps", component: <ViewMap /> },
 ];
 
