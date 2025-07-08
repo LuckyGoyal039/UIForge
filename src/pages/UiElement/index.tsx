@@ -7,52 +7,67 @@ import CurrencySwap from "@/ui/currencySwap";
 import ReturnCalculator from "@/ui/ReturnCalculator";
 import TransactionList from "@/ui/TransactionList";
 import ViewMap from "@/ui/ViewMap";
-// import FluidSimulation from "@/ui/FluidSimulation";
+
+function generateRandomDates(count: number) {
+    const dates: string[] = [];
+    let currentDate = new Date();
+
+    for (let i = 0; i < count; i++) {
+        dates.push(currentDate.toISOString().split("T")[0]); // format: YYYY-MM-DD
+        const gap = Math.floor(Math.random() * (14 - 3 + 1)) + 3; // random between 3 and 14
+        currentDate.setDate(currentDate.getDate() - gap);
+    }
+
+    return dates;
+}
+
+const dates = generateRandomDates(8);
 
 const ElementList = [
     {
         id: 1,
         name: "Return Calculator Snippet",
-        component: <ReturnCalculator/>
+        component: <ReturnCalculator />,
     },
     {
         id: 2,
         name: "Transaction List",
-        component: <TransactionList />
-    },
-    {
-        id: 7,
-        name: "Add Cash Disclosure",
-        component: <CashDisclosure />
+        component: <TransactionList />,
     },
     {
         id: 3,
         name: "Circular Menu",
-        component: <CircularMenuPage />
-    },
-    {
-        id: 6,
-        name: "Card Swipe",
-        component: <Card/>
+        component: <CircularMenuPage />,
     },
     {
         id: 4,
         name: "Continuous Tabs",
-        component: <ContinuousTab/>
+        component: <ContinuousTab />,
     },
     {
         id: 5,
         name: "View on Maps",
-        component: <ViewMap/>
+        component: <ViewMap />,
+    },
+    {
+        id: 6,
+        name: "Card Swipe",
+        component: <Card />,
+    },
+    {
+        id: 7,
+        name: "Add Cash Disclosure",
+        component: <CashDisclosure />,
     },
     {
         id: 8,
-        name: "View on Maps",
-        component: <CurrencySwap/>
+        name: "Swap Currency",
+        component: <CurrencySwap />,
     },
-   
-   
-]
+].map((item, idx) => ({
+    ...item,
+    createdDate: dates[idx],
+}));
 
 export default function UiElement() {
     return (
@@ -62,11 +77,12 @@ export default function UiElement() {
                     <Frame
                         key={element.id}
                         title={element.name}
+                        date={element.createdDate}
                     >
                         {element.component}
                     </Frame>
                 ))}
             </div>
         </div>
-    )
+    );
 }
