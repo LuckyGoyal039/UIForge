@@ -3,6 +3,7 @@ import Card from "@/ui/CardSwipe";
 import CashDisclosure from "@/ui/CashDisclosure";
 import CircularMenuPage from "@/ui/circulatMenuPage";
 import ContinuousTab from "@/ui/ContinuousTab";
+import CurrencySwap from "@/ui/currencySwap";
 import ReturnCalculator from "@/ui/ReturnCalculator";
 import TransactionList from "@/ui/TransactionList";
 import ViewMap from "@/ui/ViewMap";
@@ -43,6 +44,11 @@ const ElementList = [
         id: 5,
         name: "View on Maps",
         component: <ViewMap/>
+    },
+    {
+        id: 8,
+        name: "View on Maps",
+        component: <CurrencySwap/>
     },
    
    
