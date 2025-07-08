@@ -6,12 +6,14 @@ interface FrameProps {
     children: React.ReactNode;
     className?: string;
     title: string;
+    date: string;
 }
 
 const Frame = ({
     children,
     className = "",
-    title
+    title,
+    date
 }: FrameProps) => {
     return (
         <div className="w-full max-w-screen-md">
@@ -22,7 +24,7 @@ const Frame = ({
             </div>
             <div className="mt-2 text-sm text-gray-500 dark:text-gray-300 flex flex-col">
                 <p className="font-medium text-white md:text-lg">{title}</p>
-                <p>{new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: '2-digit' })}</p>
+                <p>{new Date(date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: '2-digit' })}</p>
             </div>
         </div>
     );
