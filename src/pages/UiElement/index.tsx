@@ -4,6 +4,7 @@ import CashDisclosure from "@/ui/CashDisclosure";
 import CircularMenuPage from "@/ui/circulatMenuPage";
 import ContinuousTab from "@/ui/ContinuousTab";
 import CurrencySwap from "@/ui/currencySwap";
+import EmptyDiary from "@/ui/emptyDiary";
 import RadialCarousel from "@/ui/RadialCarousel";
 import ReturnCalculator from "@/ui/ReturnCalculator";
 import TransactionList from "@/ui/TransactionList";
@@ -44,6 +45,7 @@ const componentsList = [
     { name: "Card Swipe", component: <Card /> },
     { name: "Continuous Tabs", component: <ContinuousTab /> },
     { name: "Tree Menu", component: <TreeMenu /> },
+    { name: "Empty Diary", component: <EmptyDiary /> },
     // { name: "View on Maps", component: <ViewMap /> },
 ];
 
