@@ -44,9 +44,9 @@ const KnobSlider: React.FC<KnobSliderProps> = ({
         return percentage * 270 - 135;
     };
 
-    const getAngleFromEvent = (event: MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>): number => {
+    const getAngleFromEvent = (event: globalThis.MouseEvent | globalThis.TouchEvent | MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>): number => {
         if (!knobRef.current) return 0;
-        
+
         const rect = knobRef.current.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
@@ -77,7 +77,7 @@ const KnobSlider: React.FC<KnobSliderProps> = ({
     );
 
     const handleMove = useCallback(
-        (event: MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>) => {
+        (event: globalThis.MouseEvent | globalThis.TouchEvent | MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement>) => {
             if (!isDragging || disabled || lastAngle === null) return;
             event.preventDefault();
 
@@ -117,10 +117,10 @@ const KnobSlider: React.FC<KnobSliderProps> = ({
         if (!isDragging) return;
 
         const handleMouseMove = (e: globalThis.MouseEvent) => {
-            handleMove(e as any);
+            handleMove(e);
         };
         const handleTouchMove = (e: globalThis.TouchEvent) => {
-            handleMove(e as any);
+            handleMove(e);
         };
         const handleMouseUp = () => setIsDragging(false);
         const handleTouchEnd = () => setIsDragging(false);
