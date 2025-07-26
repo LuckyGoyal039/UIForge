@@ -5,6 +5,7 @@ import CircularMenuPage from "@/ui/circulatMenuPage";
 import ContinuousTab from "@/ui/ContinuousTab";
 import CurrencySwap from "@/ui/currencySwap";
 import EmptyDiary from "@/ui/emptyDiary";
+import FundWeightWithDefaults from "@/ui/fundWeight";
 import KnobSliderDemo from "@/ui/knobSlider";
 import RadialCarousel from "@/ui/RadialCarousel";
 import ReturnCalculator from "@/ui/ReturnCalculator";
@@ -48,6 +49,7 @@ const componentsList = [
     { name: "Tree Menu", component: <TreeMenu /> },
     { name: "Empty Diary", component: <EmptyDiary /> },
     { name: "Knob Slider", component: <KnobSliderDemo /> },
+    { name: "Fund Weight", component: <FundWeightWithDefaults    /> },
     // { name: "View on Maps", component: <ViewMap /> },
 ];
 
