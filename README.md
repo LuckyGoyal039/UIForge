@@ -25,7 +25,6 @@ Inspired by design concepts from platforms like **Dribbble** and similar sources
 
 Here are some example components from **UIForge**:  
 
-| Add Cash Disclosure | Radial Carousel |
 |---------------------|-----------------|
 | ![AddCashDisclosure](./src/assets/screenshort/AddCashDisclosure.png) | ![RadialCarousel](./src/assets/screenshort/RadialCarousel.png) |
 
