@@ -5,6 +5,8 @@ import CircularMenuPage from "@/ui/circulatMenuPage";
 import ContinuousTab from "@/ui/ContinuousTab";
 import CurrencySwap from "@/ui/currencySwap";
 import EmptyDiary from "@/ui/emptyDiary";
+import ScrubSlider from "@/ui/fundWidget";
+import FundWeight from "@/ui/fundWidget";
 import KnobSliderDemo from "@/ui/knobSlider";
 import RadialCarousel from "@/ui/RadialCarousel";
 import ReturnCalculator from "@/ui/ReturnCalculator";
@@ -46,8 +48,9 @@ const componentsList = [
     { name: "Card Swipe", component: <Card /> },
     { name: "Continuous Tabs", component: <ContinuousTab /> },
     { name: "Tree Menu", component: <TreeMenu /> },
-    { name: "Empty Diary", component: <EmptyDiary /> },
+    // { name: "Empty Diary", component: <EmptyDiary /> },
     { name: "Knob Slider", component: <KnobSliderDemo /> },
+    // { name: "Fund Weight", component: <ScrubSlider /> },
     // { name: "View on Maps", component: <ViewMap /> },
 ];
 
@@ -62,7 +65,7 @@ const ElementList = componentsList.map((item, index) => ({
 
 export default function UiElement() {
     return (
-        <div className="mx-2 md:mx-20 lg:mx-60 mb-10">
+        <div className="mx-2 md:mx-20 xl:mx-40 2xl:mx-60 mb-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 {ElementList.map((element) => (
                     <Frame

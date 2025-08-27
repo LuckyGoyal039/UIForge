@@ -31,8 +31,8 @@ export default function ReturnCalculator() {
             : 0;
 
     return (
-        <div className='flex flex-col justify-center items-center h-full w-full bg-[#f0eff6] '>
-            <div className="bg-[#f8f7fb]  rounded-3xl  font-sans shadow w-2/3 px-2 py-4 md:p-6">
+        <div className='flex flex-col justify-center items-center h-full w-full bg-[#f0eff6]'>
+            <div className="bg-[#f8f7fb]  rounded-3xl  font-sans shadow 2xl:w-2/3 px-2 py-4 md:p-6 ">
                 <div className="flex justify-between mb-2 items-center">
                     <div className="relative w-20 md:w-30 h-20 md:h-30">
                         <svg className="w-full h-full" viewBox="0 0 100 100">
@@ -135,7 +135,7 @@ function SliderCard({
     }, [value, min, max]);
 
     return (
-        <div className="bg-white px-2 py-2 md:p-4 rounded-xl mb-4 shadow-sm">
+        <div className="bg-white px-2 py-2 2xl:p-4 rounded-xl mb-4 shadow-sm">
             <div className="flex justify-between text-sm text-gray-600">
                 <span>{label}</span>
                 <span className="font-semibold text-black">{format(value)}</span>

@@ -227,7 +227,7 @@ export default function RadialCarousel() {
             </div>
 
             {/* Instructions */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
+            <div className="absolute bottom-2 2xl:bottom-4 left-1/2 transform -translate-x-1/2 text-center">
                 <p className="text-gray-600 text-sm bg-white/80 px-4 py-2 rounded-full shadow-md">
                     Drag to rotate
                 </p>
