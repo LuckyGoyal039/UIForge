@@ -21,8 +21,7 @@ Inspired by design concepts from platforms like **Dribbble** and similar sources
 
 ---
 
-##⚡ Getting Started
-
+## ⚡ Getting Started
 - Clone the repo and install dependencies:
 ```
 git clone https://github.com/luckygoyal039/UIForge.git
@@ -32,7 +31,7 @@ npm install
 - Run the development server:
   ```npm run dev```
 
-
+---
 ## 🤝 Contributing
-
 - Contributions are welcome! Feel free to fork this repo and submit PRs with improvements, new components, or bug fixes.
+---
