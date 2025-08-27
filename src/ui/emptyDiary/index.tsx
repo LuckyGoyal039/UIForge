@@ -201,7 +201,7 @@ const RealisticDiary = () => {
                     alt="Mini Plant"
                     width={130}
                     height={130}
-                    className='absolute bottom-0 right-0' />
+                    className='absolute bottom-0 right-0 hidden xl:block' />
             </div>
         </div>
     )
