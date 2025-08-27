@@ -21,6 +21,20 @@ Inspired by design concepts from platforms like **Dribbble** and similar sources
 
 ---
 
+## 🖼️ Preview  
+
+Here are some example components from **UIForge**:  
+
+| Add Cash Disclosure | Radial Carousel |
+|---------------------|-----------------|
+| ![AddCashDisclosure](./src/assets/screenshort/AddCashDisclosure.png) | ![RadialCarousel](./src/assets/screenshort/RadialCarousel.png) |
+
+| Return Calculator Snippet | Swap Currency |
+|---------------------------|---------------|
+| ![ReturnCalculatorSnippet](./src/assets/screenshort/ReturnCalculatorSnippet.png) | ![SwapCurrency](./src/assets/screenshort/SwapCurrency.png) |
+
+---
+
 ## ⚡ Getting Started
 - Clone the repo and install dependencies:
 ```
