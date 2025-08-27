@@ -6,6 +6,8 @@ import ContinuousTab from "@/ui/ContinuousTab";
 import CurrencySwap from "@/ui/currencySwap";
 // import EmptyDiary from "@/ui/emptyDiary";
 import FundWeightWithDefaults from "@/ui/fundWeight";
+// import ScrubSlider from "@/ui/fundWidget";
+// import FundWeight from "@/ui/fundWidget";
 import KnobSliderDemo from "@/ui/knobSlider";
 import RadialCarousel from "@/ui/RadialCarousel";
 import ReturnCalculator from "@/ui/ReturnCalculator";
