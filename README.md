@@ -29,8 +29,6 @@ Here are some example components from **UIForge**:
 |---------------------|-----------------|
 | ![AddCashDisclosure](./src/assets/screenshort/AddCashDisclosure.png) | ![RadialCarousel](./src/assets/screenshort/RadialCarousel.png) |
 
-| Return Calculator Snippet | Swap Currency |
-|---------------------------|---------------|
 | ![ReturnCalculatorSnippet](./src/assets/screenshort/ReturnCalculatorSnippet.png) | ![SwapCurrency](./src/assets/screenshort/SwapCurrency.png) |
 
 ---
