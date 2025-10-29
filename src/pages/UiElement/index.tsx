@@ -13,6 +13,7 @@ import RadialCarousel from "@/ui/RadialCarousel";
 import ReturnCalculator from "@/ui/ReturnCalculator";
 import TransactionList from "@/ui/TransactionList";
 import TreeMenu from "@/ui/treeMenu";
+import AnimateSearch from "@/ui/AnimatedSearch";
 // import ViewMap from "@/ui/ViewMap";
 
 // Generate a random unique ID (similar to UUID v4 format)
@@ -28,11 +29,11 @@ function generateId() {
 function generateRandomDates(count: number): string[] {
     const dates: string[] = [];
     const currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() - 7);
+    currentDate.setDate(currentDate.getDate() - 15);
 
     for (let i = 0; i < count; i++) {
         dates.push(currentDate.toISOString().split("T")[0]); // YYYY-MM-DD
-        const gap = Math.floor(Math.random() * (14 - 3 + 1)) + 3;
+        const gap = Math.floor(Math.random() * (28 - 3 + 1)) + 3;
         currentDate.setDate(currentDate.getDate() - gap);
     }
 
@@ -43,6 +44,7 @@ const componentsList = [
     { name: "Return Calculator Snippet", component: <ReturnCalculator /> },
     { name: "Radial Carousel", component: <RadialCarousel /> },
     { name: "Transaction List", component: <TransactionList /> },
+    { name: "Animated Search", component: <AnimateSearch /> },
     { name: "Add Cash Disclosure", component: <CashDisclosure /> },
     { name: "Circular Menu", component: <CircularMenuPage /> },
     { name: "Swap Currency", component: <CurrencySwap /> },
@@ -81,11 +83,3 @@ export default function UiElement() {
         </div>
     );
 }
-
-
-// Knob Slider
-// Fund Widget
-// Scrub Slider
-// List Stack
-// Carousel Slider
-// Tags
