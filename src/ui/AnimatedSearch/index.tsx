@@ -12,7 +12,7 @@ import './index.css'
 
 export default function AnimateSearch() {
     const [isLoading, setIsLoading] = useState(false);
-    const [copied, setCopied] = useState<null | Number>(null);
+    const [copied, setCopied] = useState<null | number>(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [activeTab, setActiveTab] = useState('all');
     const [showFilters, setShowFilters] = useState(false);
@@ -163,6 +163,7 @@ export default function AnimateSearch() {
                                             onClick={() => {
                                                 navigator.clipboard.writeText(person.name);
                                                 setCopied(person.id);
+                                                console.log(copied)
                                                 setTimeout(() => setCopied(null), 200); // hide after 1.5s
                                             }}
                                         >
